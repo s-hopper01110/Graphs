@@ -11,18 +11,39 @@ class Graph:
         """
         Add a vertex to the graph.
         """
-        pass  # TODO
+    # TODO
+        self.vertices[vertex] = set()
+
+
     def add_edge(self, v1, v2):
         """
         Add a directed edge to the graph.
         """
-        pass  # TODO
+    # TODO
+        if v1 in self.vertices and v2 in self.vertices:
+            self.vertices[v1].add(v2) #not really understanding this piece
+        else:
+            raise IndexError("Non-Existent!")
+
+
     def bft(self, starting_vertex):
         """
         Print each vertex in breadth-first order
         beginning from starting_vertex.
         """
-        pass  # TODO
+     # TODO
+        queue = Queue() #creates an empty queue for FIFO
+        queue.enqueue(starting_vertex) #enqueue the starting vertex
+        visited = set() #set stores visited vertices
+        while queue.size > 0:
+            vertex = queue.dequeue()
+            if vertex not in visited:
+                print(vertex)
+                visited.add(vertex)
+                for next_vertex in self.vertices[vertex]: #not understanding this proccess to clearly 
+                    queue.enqueue(next_vertex)
+
+
     def dft(self, starting_vertex):
         """
         Print each vertex in depth-first order
@@ -36,6 +57,8 @@ class Graph:
         This should be done using recursion.
         """
         pass  # TODO
+
+
     def bfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing the shortest path from
@@ -43,6 +66,8 @@ class Graph:
         breath-first order.
         """
         pass  # TODO
+
+
     def dfs(self, starting_vertex, destination_vertex):
         """
         Return a list containing a path from
